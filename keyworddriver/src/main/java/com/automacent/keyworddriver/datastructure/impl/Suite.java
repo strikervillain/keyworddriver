@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Suite {
 	private String name;
-	private Map<String, Test> testMap = new HashMap<String, Test>();
+	private Map<String, Workflow> testMap = new HashMap<String, Workflow>();
 
 	public Suite(String name) {
 		super();
@@ -18,12 +18,7 @@ public class Suite {
 		return name;
 	}
 
-	public List<Test> getTestList() {
-		return new ArrayList<Test>(testMap.values());
-	}
-
-	public void addTest(Test test) {
-		// TODO Throw exception if same name exists
-		this.testMap.put(test.getName(), test);
+	public List<Workflow> getTestList() {
+		return new ArrayList<Workflow>(testMap.values());
 	}
 }

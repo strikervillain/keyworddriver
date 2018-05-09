@@ -2,12 +2,14 @@ package com.automacent.keyworddriver.engine.read;
 
 import java.util.List;
 
-import com.automacent.keyworddriver.datastructure.impl.RawInfo;
+import com.automacent.keyworddriver.datastructure.impl.Row;
 
 public interface IReadEngine {
-	List<RawInfo> readSuite(String suiteFile);
+	List<Row> readSuite(String suiteFile);
 
-	List<RawInfo> readTest(String testName);
+	List<Row> readTest(String testName);
+	
+	List<Row> readTestData(String testName);
 
-	List<RawInfo> readBlock(String blockName);
+	List<Row> readBlock(String blockName);
 }

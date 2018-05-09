@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import com.automacent.keyworddriver.exceptions.InvalidIdentifierException;
 
 public class Identifier {
+	
 	private String type;
 	private String value;
 	private By by;

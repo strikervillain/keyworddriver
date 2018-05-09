@@ -3,15 +3,15 @@ package com.automacent.keyworddriver.datastructure.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RawInfo {
-	private List<String> part = new ArrayList<>();
+public class Row {
+	
+	private List<String> cells = new ArrayList<>();
 
-	public List<String> getPart() {
-		return part;
+	public List<String> getCell() {
+		return cells;
 	}
 
-	public void addPart(String part) {
-		this.part.add(part);
+	public void addCell(String cell) {
+		this.cells.add(cell);
 	}
-
 }
