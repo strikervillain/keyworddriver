@@ -3,7 +3,7 @@ package com.automacent.keyworddriver.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.automacent.keyworddriver.datastructure.impl.Row;
+import com.automacent.keyworddriver.ds.workflow.Row;
 import com.automacent.keyworddriver.engine.read.IReadEngine;
 import com.automacent.keyworddriver.engine.read.ReadEngine;
 

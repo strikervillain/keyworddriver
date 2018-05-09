@@ -2,7 +2,7 @@ package com.automacent.keyworddriver.engine.read;
 
 import java.util.List;
 
-import com.automacent.keyworddriver.datastructure.impl.Row;
+import com.automacent.keyworddriver.ds.workflow.Row;
 
 public interface IReadEngine {
 	List<Row> readSuite(String suiteFile);

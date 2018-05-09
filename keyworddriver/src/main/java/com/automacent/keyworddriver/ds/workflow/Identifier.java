@@ -1,4 +1,4 @@
-package com.automacent.keyworddriver.datastructure.impl;
+package com.automacent.keyworddriver.ds.workflow;
 
 import org.openqa.selenium.By;
 

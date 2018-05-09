@@ -1,4 +1,4 @@
-package com.automacent.keyworddriver.datastructure.impl;
+package com.automacent.keyworddriver.ds.workflow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,9 @@ import java.util.List;
 import com.automacent.keyworddriver.ds.step.IStep;
 
 @SuppressWarnings("all")
-public class Module {
-	private String moduleName;
+public class Workflow {
+	private String workflowName;
+	private String workflowLocation;
+	private String dataLocation;
 	private List<IStep> steps = new ArrayList<>();
 }
