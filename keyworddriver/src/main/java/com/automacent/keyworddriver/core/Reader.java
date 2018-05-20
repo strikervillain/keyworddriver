@@ -7,7 +7,7 @@ import java.util.List;
 import com.automacent.keyworddriver.ds.primitive.Line;
 import com.automacent.keyworddriver.ds.workflow.Suite;
 import com.automacent.keyworddriver.ds.workflow.Test;
-import com.automacent.keyworddriver.engine.read.ExcelReader;
+import com.automacent.keyworddriver.engine.read.ExcelReaderEngine;
 import com.automacent.keyworddriver.engine.read.IReadEngine;
 
 public class Reader {
@@ -33,7 +33,7 @@ public class Reader {
 
 		String suiteFileAbsolutePath = suiteFile.getAbsolutePath();
 		if (suiteFileAbsolutePath.endsWith(".xlsx") || suiteFileAbsolutePath.endsWith("xlx")) {
-			readEngine = new ExcelReader();
+			readEngine = new ExcelReaderEngine();
 		}
 
 		/**
@@ -48,7 +48,7 @@ public class Reader {
 		 */
 
 		System.out.println(lines.size() + "-----------------------------------");
-		
+
 		for (Line line : lines) {
 			System.out.println(line.getSegments());
 		}
@@ -83,8 +83,8 @@ public class Reader {
 
 		String testFileAbsolutePath = test.getTestFile().getAbsolutePath();
 		if (testFileAbsolutePath.endsWith(".xlsx") || testFileAbsolutePath.endsWith("xlx")) {
-			readEngine = new ExcelReader();
-		} 
+			readEngine = new ExcelReaderEngine();
+		}
 
 		List<Line> lines = readEngine.getLinesInTest(test.getTestFile(), test.getTestName());
 		for (Line line : lines) {
@@ -93,11 +93,9 @@ public class Reader {
 
 		for (Line line : lines) {
 			Iterator<String> segmentIterator = line.getSegments().iterator();
-			String keyword  = segmentIterator.next();
-			
-			
+			String keyword = segmentIterator.next();
 		}
-		
+
 	}
 
 	private void constructTestData(Test test) {
