@@ -1,7 +1,6 @@
 package com.automacent.keyworddriver.core;
 
 import java.io.File;
-import java.util.Iterator;
 import java.util.List;
 
 import com.automacent.keyworddriver.ds.primitive.Line;
@@ -14,10 +13,6 @@ public class Reader {
 
 	private Suite suite;
 
-	public Reader() {
-
-	}
-
 	public void constructExecutionMap(String suiteFileLocation) {
 		File suiteFile = new File(suiteFileLocation);
 		constructSuite(suiteFile);
@@ -27,46 +22,38 @@ public class Reader {
 	private void constructSuite(File suiteFile) {
 		IReadEngine readEngine = null;
 
-		/**
-		 * Check suite file exists
-		 */
-
+		// TODO Check suite file exists
+		// TODO Check suite file is file
 		String suiteFileAbsolutePath = suiteFile.getAbsolutePath();
 		if (suiteFileAbsolutePath.endsWith(".xlsx") || suiteFileAbsolutePath.endsWith("xlx")) {
 			readEngine = new ExcelReaderEngine();
 		}
-
-		/**
-		 * If readEngine == null thhrow exception
-		 * 
-		 */
+		// TODO If readEngine == null throw exception
 
 		List<Line> lines = readEngine.getLinesInSuite(suiteFile);
+
+		// TODO Logic to check if first line is heading before removing
 		lines.remove(0);
-		/**
-		 * Exception when keywordlines is 0
-		 */
 
-		System.out.println(lines.size() + "-----------------------------------");
+		// TODO Exception when lines is 0
 
+		// TODO Remove this
 		for (Line line : lines) {
 			System.out.println(line.getSegments());
 		}
 
 		suite = new Suite(suiteFile);
-
 		for (Line line : lines) {
 			List<String> segments = line.getSegments();
-			System.out.println(segments.size());
+
+			// TODO Throw Exception on each segment not found or empty
 			Test test = new Test();
 			test.setTestName(segments.get(0));
 			test.setExecute(segments.get(1));
 			test.setTestFile(segments.get(2));
-			// Throw Exception on each segment not found
 			test.setDataFile(segments.get(3));
 			suite.addTest(test);
 		}
-
 	}
 
 	private void constructTests() {
@@ -75,31 +62,28 @@ public class Reader {
 			constructTest(test);
 			constructTestData(test);
 		}
-
 	}
 
 	private void constructTest(Test test) {
 		IReadEngine readEngine = null;
 
+		// TODO Check test file exists
+		// TODO Check test file is file
 		String testFileAbsolutePath = test.getTestFile().getAbsolutePath();
 		if (testFileAbsolutePath.endsWith(".xlsx") || testFileAbsolutePath.endsWith("xlx")) {
 			readEngine = new ExcelReaderEngine();
 		}
 
 		List<Line> lines = readEngine.getLinesInTest(test.getTestFile(), test.getTestName());
+		// TODO Remove this
 		for (Line line : lines) {
 			System.out.println(line.getSegments());
-		}
-
-		for (Line line : lines) {
-			Iterator<String> segmentIterator = line.getSegments().iterator();
-			String keyword = segmentIterator.next();
 		}
 
 	}
 
 	private void constructTestData(Test test) {
-
+		// TODO code
 	}
 
 	public static void main(String[] args) {

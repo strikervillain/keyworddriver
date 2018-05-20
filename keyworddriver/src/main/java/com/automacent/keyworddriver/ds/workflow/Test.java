@@ -6,8 +6,8 @@ import java.util.List;
 
 import com.automacent.keyworddriver.ds.step.IStep;
 
-@SuppressWarnings("all")
 public class Test {
+	
 	private String testName;
 	private File testFile;
 	private File dataFile;
@@ -28,10 +28,11 @@ public class Test {
 
 	public void setTestFile(String testFileLocation) {
 		this.testFile = new File(testFileLocation);
-		if (!testFile.exists() || !testFile.isFile()) {
+		if (!testFile.exists()) {
 			throw new RuntimeException("File not found");
+			// TODO throw custom exception
 		}
-		
+
 	}
 
 	public File getDataFile() {
@@ -40,10 +41,11 @@ public class Test {
 
 	public void setDataFile(String dataFileLocation) {
 		this.dataFile = new File(dataFileLocation);
-		if (!dataFile.exists() || !dataFile.isFile()) {
+		if (!dataFile.exists()) {
 			throw new RuntimeException("File not found");
+			// TODO throw custom exception
 		}
-		
+
 	}
 
 	public void setExecute(boolean execute) {
@@ -61,8 +63,10 @@ public class Test {
 			this.execute = true;
 		else if (execute.equals("f") || execute.equals("false") || execute.equals("n") || execute.equals("no"))
 			this.execute = false;
-		else
+		else {
 			throw new RuntimeException("Value in execute should be ");
+			// TODO throw custom exception
+		}
 	}
 
 	public List<IStep> getSteps() {
