@@ -1,15 +1,14 @@
 package com.automacent.keyworddriver.engine.read;
 
+import java.io.File;
 import java.util.List;
 
-import com.automacent.keyworddriver.ds.workflow.Row;
+import com.automacent.keyworddriver.ds.primitive.Line;
 
 public interface IReadEngine {
-	List<Row> readSuite(String suiteFile);
+	boolean isFileFound();
 
-	List<Row> readTest(String testName);
+	List<Line> getLinesInSuite(File suiteFile);
 	
-	List<Row> readTestData(String testName);
-
-	List<Row> readBlock(String blockName);
+	List<Line> getLinesInTest(File testFile, String testName);
 }
