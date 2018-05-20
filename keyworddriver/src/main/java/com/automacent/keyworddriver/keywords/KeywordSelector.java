@@ -1,4 +1,4 @@
-package com.automacent.keyworddriver.core;
+package com.automacent.keyworddriver.keywords;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -6,8 +6,6 @@ import java.util.List;
 
 import com.automacent.keyworddriver.anotations.Keyword;
 import com.automacent.keyworddriver.enums.KeywordType;
-import com.automacent.keyworddriver.keywords.InternalKeywords;
-import com.automacent.keyworddriver.keywords.UIKeywords;
 
 public class KeywordSelector {
 
