@@ -1,6 +1,7 @@
 package com.automacent.keyworddriver.core;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 
 import com.automacent.keyworddriver.ds.primitive.Line;
@@ -41,11 +42,13 @@ public class Reader {
 		 */
 
 		List<Line> lines = readEngine.getLinesInSuite(suiteFile);
-
+		lines.remove(0);
 		/**
 		 * Exception when keywordlines is 0
 		 */
 
+		System.out.println(lines.size() + "-----------------------------------");
+		
 		for (Line line : lines) {
 			System.out.println(line.getSegments());
 		}
@@ -61,6 +64,7 @@ public class Reader {
 			test.setTestFile(segments.get(2));
 			// Throw Exception on each segment not found
 			test.setDataFile(segments.get(3));
+			suite.addTest(test);
 		}
 
 	}
@@ -82,7 +86,18 @@ public class Reader {
 			readEngine = new ExcelReader();
 		} 
 
+		List<Line> lines = readEngine.getLinesInTest(test.getTestFile(), test.getTestName());
+		for (Line line : lines) {
+			System.out.println(line.getSegments());
+		}
 
+		for (Line line : lines) {
+			Iterator<String> segmentIterator = line.getSegments().iterator();
+			String keyword  = segmentIterator.next();
+			
+			
+		}
+		
 	}
 
 	private void constructTestData(Test test) {

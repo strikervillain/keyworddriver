@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Suite {
-	private String name;
+	private String suiteName;
 	private File suiteFile;
 
 	private Map<String, Test> testMap = new HashMap<String, Test>();
@@ -15,11 +15,11 @@ public class Suite {
 	public Suite(File suiteFile) {
 		super();
 		this.suiteFile = suiteFile;
-		this.name = suiteFile.getName().replaceAll(".xlsx", "").replaceAll(".xls", "");
+		this.suiteName = suiteFile.getName().replaceAll(".xlsx", "").replaceAll(".xls", "");
 	}
 
-	public String getName() {
-		return name;
+	public String getSuiteName() {
+		return suiteName;
 	}
 
 	public File getSuiteFile() {

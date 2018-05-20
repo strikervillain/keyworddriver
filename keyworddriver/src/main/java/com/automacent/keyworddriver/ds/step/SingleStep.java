@@ -25,6 +25,4 @@ public class SingleStep implements IStep {
 	public void setArgs(List<Object> args) {
 		this.args = args;
 	}
-	
-	
 }

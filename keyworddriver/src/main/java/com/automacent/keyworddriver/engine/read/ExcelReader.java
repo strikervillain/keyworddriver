@@ -36,6 +36,15 @@ public class ExcelReader implements IReadEngine {
 		return readRows();
 	}
 
+	@Override
+	public List<Line> getLinesInTest(File testFile, String testName) {
+		loadWorkbook(testFile);
+		loadSheet(testName);
+		return readRows();
+	}
+
+	// ------------------------Excel File Read-------------
+
 	protected Workbook workbook;
 	protected Sheet sheet;
 
@@ -66,6 +75,10 @@ public class ExcelReader implements IReadEngine {
 		sheet = workbook.getSheetAt(0);
 	}
 
+	private void loadSheet(String sheetName) {
+		sheet = workbook.getSheet(sheetName);
+	}
+
 	private List<Line> readRows() {
 		List<Line> lines = new ArrayList<>();
 
@@ -77,36 +90,35 @@ public class ExcelReader implements IReadEngine {
 
 			Row currentRow = rowIterator.next();
 
-			if (count++ > 0) {
-				Iterator<Cell> cellIterator = currentRow.iterator();
-				Line line = new Line();
-				while (cellIterator.hasNext()) {
+			Iterator<Cell> cellIterator = currentRow.iterator();
+			Line line = new Line();
+			while (cellIterator.hasNext()) {
 
-					Cell currentCell = cellIterator.next();
+				Cell currentCell = cellIterator.next();
 
-					if (currentCell.getCellTypeEnum() == CellType.STRING) {
-						line.addSegment(currentCell.getStringCellValue());
-					} else {
-						/**
-						 * 
-						 * Throw exception stating the cells must be formatted as string
-						 * 
-						 * 
-						 */
-						System.out.println("------------------------------- cells must be formatted as string");
+				if (currentCell.getCellTypeEnum() == CellType.STRING) {
+					line.addSegment(currentCell.getStringCellValue());
+				} else {
+					/**
+					 * 
+					 * Throw exception stating the cells must be formatted as string
+					 * 
+					 * 
+					 */
+					System.out.println("------------------------------- cells must be formatted as string");
 
-					}
 				}
 
-				lines.add(line);
+				
 			}
+			lines.add(line);
 
 		}
 
 		return lines;
 	}
 
-	private void closeWoerkbook() {
+	private void closeWorkbook() {
 		try {
 			workbook.close();
 		} catch (IOException e) {
@@ -115,9 +127,4 @@ public class ExcelReader implements IReadEngine {
 		}
 	}
 
-	@Override
-	public List<Line> getLinesInTest(File testFile, String testName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
